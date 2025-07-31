@@ -1,0 +1,30 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://hikepmp-dev.smilecdr.com/member-portal/#/login');
+  await page.getByRole('button', { name: 'Login' }).click();
+  await page.getByRole('textbox', { name: 'Username' }).click();
+  await page.getByRole('textbox', { name: 'Username' }).fill('Julia');
+  await page.getByRole('textbox', { name: 'Password' }).dblclick();
+  await page.getByRole('textbox', { name: 'Password' }).fill('Batman123');
+  await page.getByRole('button', { name: 'Sign in' }).click();
+  await page.goto('https://hikepmp-dev.smilecdr.com/member-portal/#/dashboard');
+  await page.getByRole('link', { name: 'navbarLinkIcon Provider' }).click();
+  await page.getByRole('link', { name: 'navbarLinkIcon Provider' }).click();
+  await page.getByRole('link', { name: 'Provider', exact: true }).click();
+  await page.getByRole('dialog', { name: 'Provider Directory - Member' }).click();
+  await page.locator('div:nth-child(2) > app-provider-search-card > .card > .card-footer').click();
+  await page.getByText('Health Facilities').click();
+  await page.locator('div:nth-child(3) > app-provider-search-card > .card > .card-footer').click();
+  await page.locator('[id="\\35 5641compare"]').check();
+  await page.locator('div').filter({ hasText: /^Compare with other providers$/ }).click();
+  await page.getByRole('button', { name: 'Compare providers (2)' }).click();
+  await page.getByText('Return to previous page').click();
+  await page.locator('[id="\\35 5641"]').getByRole('button', { name: 'View details' }).click();
+  await page.getByText('Return to previous page').click();
+  await page.locator('[id="\\35 5641compare"]').uncheck();
+  await page.locator('div').filter({ hasText: /^Select another provider to compare$/ }).click();
+  await page.getByRole('button', { name: 'My Directory' }).click();
+  await page.getByRole('button', { name: 'Remove All' }).click();
+  await page.getByText('No matching results were').click();
+});
