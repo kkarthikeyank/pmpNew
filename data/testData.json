@@ -1,0 +1,204 @@
+{
+  "user": "julia",
+  "password": "Batman123",
+   
+  "claimsytdyears": [
+    "2023",
+    "2022"
+   
+  ],
+  
+  "claimsDateFilter": [
+  {
+    "label": "3 Months",
+      "resultsSelectOption": "50"
+
+  },
+  {
+    "label": "3 Months", 
+     "resultsSelectOption": "50"
+
+  }
+],
+ 
+  
+  "claimsNumberSearch": [
+    {
+      "label": "60 Months",
+      "claimNumber": "144111"
+    },
+    {
+      "label": "3 Months",
+      "claimNumber": "144111"
+    }
+  ],
+  "customDateRanges": [
+    {
+      "fromDate": "03/10/2027",
+      "toDate": "03/11/2028"
+    }
+  ],
+  "FiltersList": [
+    {
+      "dateRange": "Last 60 Months",
+      "providers": [
+        "Nicole Koepke"
+      ],
+      
+      "payees": [
+        "Integra Partners Llc"
+      ],
+      "diagnoses": []
+    }
+  ],
+  "PhysicianSearchCases": [
+    {
+      "dateRange": "Last 3 Months",
+      "physicianName": "Scott Down"
+    }
+  ],
+  "LabSearchCases": [
+    {
+      "dateRange": "Last 3 Months",
+      "labName": "Life Labs"
+    }
+  ],
+  "TestNameCases": [
+    {
+      "dateRange": "Last 60 Months",
+      "testName": "Laboratory",
+      "showresultsdropdown": "10"
+
+    },
+    {
+      "dateRange": "Last 60 Months",
+      "testName": "Calcium SerPl-sCnc",
+      "showresultsdropdown": "10"
+
+    }
+   
+  ],
+  "labsCustomDateRange": [
+    {
+      "startDate": {
+        "dayName": "Monday",
+        "month": "1",
+        "monthName": "January",
+        "day": "1",
+        "year": "2024"
+      },
+      "endDate": {
+        "dayName": "Saturday",
+        "month": "11",
+        "monthName": "November",
+        "day": "30",
+        "year": "2024"
+      }
+    }
+  ],
+  "PhysicianSearchCaseswithabnormal": [
+    {
+      "dateRange": "Last 36 Months",
+      "physicianName": " Down"
+    }
+  ],
+  "TestnameSearchCaseswithabnormal": [
+    {
+      "dateRange": "Last 60 Months",
+      "TestName": "Calcium SerPl-sCnc"
+    }
+  ],
+  "labvendorSearchCaseswithabnormal": [
+    {
+      "dateRange": "Last 60 Months",
+      "labsname": "Precision Labs"
+    }
+  ],
+  "DoctorSearch": {
+    "doctorTypeTextbox": {
+      "keywordSearch": "Clinical Psychologist"
+    },
+    "doctorNameTextbox": {
+      "nameSearch": ""
+    },
+    "planOptions": {
+      "selected": "Health Partners",
+      "options": [
+        "KidzPartners",
+        "Health Partners Medicare",
+        "Health Partners"
+      ]
+    }
+  },
+  "distanceOptions": {
+    "selectedmiles": " More than 100 miles",
+    "options": [
+      "within 10 miles",
+      "within 20 miles",
+      "within 50 miles",
+      "within 100 miles",
+      "More than 100 miles"
+    ]
+  },
+
+    
+  "DoctorNameSearch": [
+    {
+      "doctorNameTextbox": {
+        "keywordSearch": "tgw"
+      },
+      "planOptions": {
+        "selected": "Health Partners",
+        "options": [
+          "KidzPartners",
+          "Health Partners Medicare",
+          "Health Partners"
+        ]
+      },
+      "distance": {
+        "choosemiles": " More than 100 miles",
+        "options": [
+          "within 10 miles",
+          "within 20 miles",
+          "within 50 miles",
+          "within 100 miles",
+          "More than 100 miles"
+        ]
+        
+      }
+    }
+  ],  
+
+  "healthfacilitiesSearch": [
+    {
+      "healthNameTextbox": {
+        "keywordSearch": "Howard's Hospital"
+      },
+      "planOptions": {
+        "selected": "Health Partners",
+        "options": [
+          "KidzPartners",
+          "Health Partners Medicare",
+          "Health Partners"
+        ]
+      },
+      "distance": {
+        "choosemiles": " More than 100 miles",
+        "options": [
+          "within 10 miles",
+          "within 20 miles",
+          "within 50 miles",
+          "within 100 miles",
+          "More than 100 miles"
+        ]
+        
+      }
+    }
+  ]
+
+
+}
+
+
+
+
