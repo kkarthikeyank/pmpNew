@@ -219,16 +219,100 @@ async logLabResults(name, rangeText) {
    
    
   }
+// async selectNumberOfResults(count) {
+//  const drop= await this.page.getByLabel('select number of results').selectOption(count.toString());
+//   console.log("changed the dropdown for showmoreresults",drop)
+//    await this.applyButton.click(); 
+
+//     // await this.page.waitForTimeout(3000); // waits 3 seconds (use as last resort)
+// await this.testNameLocators.first().waitFor({ state: 'visible', timeout: 10000 });
+
+// }
 async selectNumberOfResults(count) {
- const drop= await this.page.getByLabel('select number of results').selectOption(count.toString());
-  console.log("changed the dropdown for showmoreresults",drop)
-   await this.applyButton.click(); 
-
-    // await this.page.waitForTimeout(3000); // waits 3 seconds (use as last resort)
-await this.testNameLocators.first().waitFor({ state: 'visible', timeout: 10000 });
-
+    try {
+        console.log(`🔄 Selecting ${count} results from dropdown...`);
+        
+        // 1. Wait for dropdown to be ready
+        await this.resultsDropdown.waitFor({ state: 'visible', timeout: 15000 });
+        
+        // 2. Select the option and wait for it to be selected
+        await this.resultsDropdown.selectOption(count.toString());
+        console.log(`✅ Dropdown changed to show ${count} results`);
+        
+        // 3. Small delay to ensure dropdown value is set
+        await this.page.waitForTimeout(1000);
+        
+        // 4. Verify the selection was made
+        const selectedValue = await this.resultsDropdown.inputValue();
+        if (selectedValue !== count.toString()) {
+            throw new Error(`Dropdown selection failed. Expected: ${count}, Got: ${selectedValue}`);
+        }
+        
+        // 5. Click Apply button and wait for it to be processed
+        await this.applyButton.waitFor({ state: 'visible', timeout: 10000 });
+        await this.applyButton.click();
+        console.log('✅ Apply button clicked');
+        
+        // 6. Wait for network requests to complete
+        await this.page.waitForLoadState('networkidle', { timeout: 30000 });
+        
+        // 7. Wait for either results to appear OR "No results" message
+        await Promise.race([
+            // Wait for test results to appear
+            this.page.waitForSelector(
+                "//div[@data-id='labsCardObjectResultsDiv']//div[contains(@class, 'row')]", 
+                { state: 'visible', timeout: 20000 }
+            ),
+            // OR wait for "No Lab Results" message
+            this.page.waitForSelector(
+                'text=No Lab Results to Show', 
+                { state: 'visible', timeout: 20000 }
+            )
+        ]);
+        
+        // 8. Verify results loaded
+        const resultsCount = await this.testNameLocators.count();
+        if (resultsCount > 0) {
+            console.log(`✅ ${resultsCount} test results found and loaded successfully`);
+            
+            // 9. Wait for first result to be fully visible (extra safety)
+            await this.testNameLocators.first().waitFor({ 
+                state: 'visible', 
+                timeout: 5000 
+            });
+        } else {
+            console.log('ℹ️ No test results found - this may be expected');
+        }
+        
+        return resultsCount;
+        
+    } catch (error) {
+        // 10. Enhanced error handling with debugging info
+        console.error('❌ Error in selectNumberOfResults:', error.message);
+        
+        // Take screenshot for debugging
+        await this.page.screenshot({ 
+            path: `debug-screenshots/select-results-error-${Date.now()}.png`,
+            fullPage: true 
+        });
+        
+        // Log page state for debugging
+        const pageUrl = this.page.url();
+        const pageTitle = await this.page.title();
+        console.log(`📍 Current URL: ${pageUrl}`);
+        console.log(`📄 Page Title: ${pageTitle}`);
+        
+        // Check if Apply button is still visible
+        const applyVisible = await this.applyButton.isVisible();
+        console.log(`🔘 Apply button visible: ${applyVisible}`);
+        
+        // Check if dropdown still exists
+        const dropdownVisible = await this.resultsDropdown.isVisible();
+        console.log(`📋 Dropdown visible: ${dropdownVisible}`);
+        
+        throw new Error(`Failed to select ${count} results: ${error.message}`);
+    }
 }
-
 
 
 
