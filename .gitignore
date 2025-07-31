@@ -18,7 +18,7 @@ test-results/
 *.png
 
 # Ignore individual Playwright result JSON files
-*.json
+# *.json
 
 # If you want to ignore specific JSON files inside a directory like this:
 # E.g. only ignore `*-result.json` files
