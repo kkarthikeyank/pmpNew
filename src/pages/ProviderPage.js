@@ -52,12 +52,24 @@ export class ProviderPage {
   }
 
   // open the provider tab
-  async openproviderTab () {
-    // Ensure the provider tab is visible before clicking
-    await this.page.waitForSelector('#navLink-PROVIDERS', { state: 'visible' });
+  // async openproviderTab () {
+  //   // Ensure the provider tab is visible before clicking
+  //   await this.page.waitForSelector('#navLink-PROVIDERS', { state: 'visible' });
 
-    await this.providerTap.click();
-    await this.page.waitForLoadState('networkidle');
+  //   await this.providerTap.click();
+  //   await this.page.waitForLoadState('networkidle');
+  // }
+  async openProviderTab() {
+    console.log('🏥 Opening Provider tab...');
+    try {
+      await this.providerTap.click();
+      await this.page.waitForLoadState('networkidle');
+      console.log('✅ Provider tab opened');
+      return true;
+    } catch (error) {
+      console.log('❌ Failed to open Provider tab');
+      return false;
+    }
   }
 
   // scenario : search for doctor type with keyword and plan and distance

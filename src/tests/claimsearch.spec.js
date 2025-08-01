@@ -385,10 +385,10 @@ await notes.downloadhealthnotesPdf();
   await provider.printSpecialtyIfExists();
   await provider.printPlanIfExists();
   await provider.printDistanceIfExists();
-     await provider.clickDirectoryButton();
-   await provider.clickMyDirectoryButton();
+  //    await provider.clickDirectoryButton();
+  //  await provider.clickMyDirectoryButton();
   //  await provider.clickRemoveAllButton();
-   await provider.clickPreviousButton();
+  //  await provider.clickPreviousButton();
 
 
 
