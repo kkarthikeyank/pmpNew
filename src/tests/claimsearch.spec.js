@@ -375,7 +375,7 @@ await notes.downloadhealthnotesPdf();
      const provider = new ProviderPage(page);
 
   // open the Provider tab
-  await provider.openproviderTab();
+  await provider.openProviderTab();
   // scenario : search for doctor type with keyword and plan and distance
   await provider.selectDoctorType();
   await provider.enterDoctorType(data.DoctorSearch.doctorTypeTextbox.keywordSearch);
