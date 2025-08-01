@@ -387,7 +387,7 @@ await notes.downloadhealthnotesPdf();
   await provider.printDistanceIfExists();
      await provider.clickDirectoryButton();
    await provider.clickMyDirectoryButton();
-   await provider.clickRemoveAllButton();
+  //  await provider.clickRemoveAllButton();
    await provider.clickPreviousButton();
 
 
